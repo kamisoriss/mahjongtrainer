@@ -1,0 +1,51 @@
+/* app.component.css */
+
+.app-container {
+  display: grid;
+  /* Colonne 1 : Navbar (200px) | Colonne 2 : Le reste de la page (1fr) */
+  grid-template-columns: 200px 1fr;
+  /* Lignes : Header (auto) | Contenu (1fr) | Footer (auto) | Legal (auto) */
+  grid-template-rows: auto 1fr auto auto;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-body);
+}
+
+/* -------------------------------------------
+   Placement dans la grille
+   ------------------------------------------- */
+
+/* La barre de navigation prend toute la hauteur à gauche (sur les 4 lignes) */
+.nav-bar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+  background-color: var(--bg-elements);
+}
+
+/* Le header en haut à droite */
+.header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+/* La zone de contenu dynamique au centre à droite */
+.main-content {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Le footer sous le contenu */
+.footer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+/* La barre légale tout en bas à droite */
+.legal-bar {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  background-color: var(--bg-elements);
+}

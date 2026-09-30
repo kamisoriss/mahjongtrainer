@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #0077b6;
+  --jade-green: #2a9d8f;
+
+  --bg-body: #ffffff;
+  --bg-elements: #ffffff;
+  --text-main: #212529;
+  --transition-speed: 0.3s;
+  --btn-bg: #111111;
+  --btn-text: #ffffff;
+}
+
+/* Thème Sombre */
+[data-theme="dark"] {
+  --bg-body: #12181b;
+  --bg-elements: #1a2327;
+  --text-main: #f1f5f9;
+  --transition-speed: 0.3s;
+  --btn-bg: #00b4d8;
+  --btn-text: #0f172a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* Boutons génériques (utilisables de partout) */
+.btn-generic {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-generic:hover {
+  background-color: var(--jade-green);
+  color: #ffffff;
+}

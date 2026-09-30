@@ -1,0 +1,52 @@
+/* Conteneur principal de la barre de navigation verticale */
+.nav-bar {
+  width: 200px;
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+  background-color: var(--bg-elements);
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1rem 2rem 1rem; /* Padding en bas ajusté pour le logo */
+  gap: 2rem;
+  /* On enlève position: relative car on n'utilise plus de ::after */
+}
+
+/* Style des boutons de navigation selon la maquette */
+.btn-nav {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1.2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color var(--transition-speed);
+}
+
+.btn-nav:hover {
+  background-color: var(--jade-green);
+}
+
+/*
+ * Conteneur du logo Mahjong
+ * 'margin-top: auto' pousse ce bloc tout en bas de la barre de navigation
+ */
+.nav-logo-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style de l'image contenant les 3 tuiles */
+.nav-logo-img {
+  max-width: 140px; /* Ajuste cette valeur selon la taille souhaitée */
+  height: auto;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2)); /* Ajoute une ombre stylée au PNG */
+  transition: transform var(--transition-speed);
+}
+
+.nav-logo-img:hover {
+  transform: scale(1.05); /* Petit effet de zoom au survol */
+}
