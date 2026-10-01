@@ -1,0 +1,15 @@
+.div-logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  min-height: 120px;
+  margin: 0 auto; /* Centre la div horizontalement dans le header */
+}
+
+.div-logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
