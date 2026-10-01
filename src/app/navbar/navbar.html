@@ -1,1 +1,10 @@
-<p>navbar works!</p>
+<nav class="nav-bar" aria-label="menu de navigation">
+  <ul>
+    <li><a aria-label="acceuil" [routerLink]="['/Acceuil']" i18n>Acceuil</a></li>
+    <li><a aria-label="MCR" [routerLink]="['/Mcr']" i18n>MCR</a></li>
+    <li><a aria-label="Richii" [routerLink] = "['/Richii']" i18n>RICHII</a></li>
+  </ul>
+  <div class="nav-logo-container">
+    <img ngSrc="assets/img/mahjongtrainernavbar.png" class="nav-logo-img" alt="logonavbar" fill="False">
+  </div>
+</nav>

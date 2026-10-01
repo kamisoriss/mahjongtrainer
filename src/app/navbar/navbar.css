@@ -1,52 +1,69 @@
-/* Conteneur principal de la barre de navigation verticale */
+:host {
+  display: block;
+  height: 100%;
+}
+
 .nav-bar {
-  width: 200px;
-  height: 100vh; /* Prend toute la hauteur de l'écran */
-  background-color: var(--bg-elements);
   display: flex;
   flex-direction: column;
-  padding: 4rem 1rem 2rem 1rem; /* Padding en bas ajusté pour le logo */
-  gap: 2rem;
-  /* On enlève position: relative car on n'utilise plus de ::after */
+  height: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background-color: #1f6f65; /* Fond vert sombre de la barre */
 }
 
-/* Style des boutons de navigation selon la maquette */
-.btn-nav {
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+a {
+  display: block;
+  background-color: #fdfbf7; /* Couleur blanc/ivoire de la face de la tuile */
+  color: #1c73a8; /* Texte couleur vert sombre */
+  text-decoration: none;
   padding: 1.2rem 1rem;
   font-size: 1.1rem;
-  font-weight: bold;
-  text-align: left;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color var(--transition-speed);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center; /* Centre le texte comme un symbole sur une tuile */
+  border-radius: 8px; /* Bords arrondis de la tuile */
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 4px 0 #1c73a8, 0 5px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+/* Effet de survol */
+a:hover {
+  background-color: #ffffff;
+  transform: translateY(2px); /* La tuile s'enfonce légèrement */
+  box-shadow: 0 4px 0 #0d423b, 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
-.btn-nav:hover {
-  background-color: var(--jade-green);
+/* Effet quand on clique dessus (tuile complètement enfoncée) */
+a:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 #0d423b, 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/*
- * Conteneur du logo Mahjong
- * 'margin-top: auto' pousse ce bloc tout en bas de la barre de navigation
- */
 .nav-logo-container {
   margin-top: auto;
+  padding-bottom: 1rem;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Style de l'image contenant les 3 tuiles */
 .nav-logo-img {
-  max-width: 140px; /* Ajuste cette valeur selon la taille souhaitée */
+  width: 100%;
   height: auto;
-  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2)); /* Ajoute une ombre stylée au PNG */
-  transition: transform var(--transition-speed);
-}
-
-.nav-logo-img:hover {
-  transform: scale(1.05); /* Petit effet de zoom au survol */
+  object-fit: contain;
 }

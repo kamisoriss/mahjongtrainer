@@ -1,23 +1,41 @@
-/* Conteneur principal de la barre légale horizontale */
-.legal-bar {
-  background-color: var(--bg-elements);
-  padding: 1rem 2rem;
-  display: flex;
-  gap: 1.5rem;
+:host {
+  display: block;
   width: 100%;
 }
 
-/* Style des boutons de la barre légale */
-.btn-legal {
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color var(--transition-speed);
+.nav-legale ul {
+  list-style-type: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Centre les tuiles légales */
+  gap: 2rem;
+  background-color: #0077b6; /* Fond bleu de la barre légale */
 }
 
-.btn-legal:hover {
-  background-color: var(--jade-green);
+.nav-legale a {
+  display: inline-block;
+  background-color: #fdfbf7;
+  color: #1c73a8; /* Texte bleu rappelant la barre */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+
+  /* Épaisseur 3D version réduite */
+  box-shadow: 0 4px 0 #004a73, 0 5px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.nav-legale a:hover {
+  background-color: #ffffff;
+  transform: translateY(1px);
+  box-shadow: 0 3px 0 #004a73, 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-legale a:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #004a73, 0 1px 2px rgba(0, 0, 0, 0.2);
 }
