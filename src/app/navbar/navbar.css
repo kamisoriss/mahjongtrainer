@@ -1,76 +1,8 @@
-:host {
-  display: block;
-  height: 100%;
+.nav-logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
-
-.nav-bar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
-  background-color: #1f6f65; /* Fond vert sombre de la barre */
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-a {
-  display: block;
-  /* Dégradé simulant la couleur ivoire et l'éclairage de la résine */
-  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 50%, #f0e5cf 100%);
-  color: #1c73a8;
-  text-decoration: none;
-  padding: 1.2rem 1rem;
-  font-size: 1.1rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  text-align: center;
-  border-radius: 8px;
-  border: 1px solid #e3d5b8; /* Bordure légèrement beige/os */
-
-  /* L'empilement des ombres pour l'effet 3D ultra-réaliste :
-     1. Reflet blanc en haut à gauche (inset)
-     2. Ombre douce en bas à droite pour la courbure (inset)
-     3. La base bleue de la tuile
-     4. L'ombre portée sur la table */
-  box-shadow:
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
-    0 6px 0 #1c73a8,
-    0 10px 10px rgba(0, 0, 0, 0.3);
-
-  /* Effet texte gravé en creux */
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
-
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
-}
-
-a:hover {
-  /* On éclaircit un peu la tuile au survol */
-  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #f4ebd8 100%);
-  transform: translateY(2px);
-  box-shadow:
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
-    0 4px 0 #1c73a8,
-    0 6px 8px rgba(0, 0, 0, 0.3);
-}
-
-a:active {
-  transform: translateY(6px);
-  box-shadow:
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
-    0 0 0 #1c73a8,
-    0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
 .nav-logo-container {
   margin-top: auto;
   padding-bottom: 1rem;
@@ -83,9 +15,29 @@ a:active {
   justify-content: center;
   align-items: center;
 }
+:host {
+  display: block;
+  height: 100%;
+}
 
-.nav-logo-img {
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background-color: #1f6f65;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.nav-bar .btn-tuile {
+  display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
 }

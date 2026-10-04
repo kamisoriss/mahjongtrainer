@@ -86,3 +86,43 @@ li::marker {
    word-break: normal;
    overflow-wrap: break-word;
  }
+.btn-tuile {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 50%, #f0e5cf 100%);
+  color: #1c73a8;
+  text-decoration: none;
+  padding: 1.2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e3d5b8;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
+    0 6px 0 #1c73a8,
+    0 10px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  cursor: pointer;
+}
+
+.btn-tuile:hover {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #f4ebd8 100%);
+  transform: translateY(2px);
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
+    0 4px 0 #1c73a8,
+    0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-tuile:active {
+  transform: translateY(6px);
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.1),
+    0 0 0 #1c73a8,
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}

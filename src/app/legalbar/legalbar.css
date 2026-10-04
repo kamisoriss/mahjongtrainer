@@ -12,43 +12,7 @@
   gap: 2rem;
   background-color: #0077b6; /* Fond bleu de la barre légale */
 }
-.nav-legale a {
-  display: inline-block;
-  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 50%, #f0e5cf 100%);
-  color: #1c73a8;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  border: 1px solid #e3d5b8;
-
-  /* Reflets et base adaptés pour une tuile plus petite */
-  box-shadow:
-    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
-    inset -1px -2px 3px rgba(0, 0, 0, 0.1),
-    0 4px 0 #1c73a8,
-    0 5px 6px rgba(0, 0, 0, 0.2);
-
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
-}
-
-.nav-legale a:hover {
-  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #f4ebd8 100%);
-  transform: translateY(1px);
-  box-shadow:
-    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
-    inset -1px -2px 3px rgba(0, 0, 0, 0.1),
-    0 3px 0 #1c73a8,
-    0 4px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nav-legale a:active {
-  transform: translateY(4px);
-  box-shadow:
-    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
-    inset -1px -2px 3px rgba(0, 0, 0, 0.1),
-    0 0 0 #1c73a8,
-    0 1px 2px rgba(0, 0, 0, 0.2);
+.nav-bar .btn-tuile {
+  display: block;
+  width: 100%;
 }
