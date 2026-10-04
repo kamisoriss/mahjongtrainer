@@ -1,16 +1,15 @@
 .app-container {
   display: grid;
-  /* Colonne 1: Navbar (200px) | Colonne 2: Le reste de la page */
   grid-template-columns: 200px 1fr;
-  /* Lignes : Header (auto) | Contenu (s'étire) | Footer (auto) */
   grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  height: 100vh; /* Remplace min-height par height pour forcer la taille exacte de l'écran */
   width: 100%;
+  overflow: hidden; /* Coupe tout ce qui dépasse pour supprimer la barre de défilement globale */
 }
 
 .nav-bar {
   grid-column: 1 / 2;
-  grid-row: 1 / 4; /* S'étire sur toute la hauteur (du header jusqu'au footer) */
+  grid-row: 1 / 4;
   background-color: var(--bg-elements, #e9ecef);
 }
 
@@ -23,6 +22,8 @@
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   padding: 2rem;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .footer {

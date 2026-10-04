@@ -31,6 +31,7 @@ body {
   background-color: var(--bg-body);
   color: var(--text-main);
   min-height: 100vh;
+
 }
 
 /* Boutons génériques (utilisables de partout) */
@@ -48,3 +49,40 @@ body {
   background-color: var(--jade-green);
   color: #ffffff;
 }
+ul {
+  /* Rétablit les puces effacées par le reset global */
+  list-style-type: disc;
+  /* Recrée l'espace à gauche pour que les puces soient visibles */
+  margin-left: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Optionnel : met les puces à la couleur de ton thème */
+li::marker {
+  color: var(--jade-green, #2a9d8f);
+}
+.cadre-texte {
+   background-color: var(--bg-elements); /* Remplacé pour correspondre à ton :root */
+   color: var(--text-main);
+   font-size: 1.1rem;
+   font-weight: 500;
+   letter-spacing: 0.3px;
+   line-height: 1.6;
+   margin: 15px auto;
+   width: 100%;
+   max-width: 1500px;
+   padding: 16px 20px;
+   border-radius: 8px; /* Valeur fixe remplaçant --radius-lg */
+   border: 1px solid rgba(128, 128, 128, 0.2); /* Bordure semi-transparente qui s'adapte aux deux thèmes */
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Ombre passée en noir transparent pour ne pas jurer en dark mode */
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+   text-align: justify;
+   word-break: normal;
+   overflow-wrap: break-word;
+ }

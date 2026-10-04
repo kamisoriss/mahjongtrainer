@@ -1,0 +1,101 @@
+/* 1. LE PLACEMENT */
+.theme-switch {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  z-index: 9999;
+  display: block;
+  width: 120px;
+  height: 44px;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Cache l'input natif */
+.theme-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Le grand rail extérieur (effet creusé dans le fond vert) */
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #1f6f65; /* Vert sombre de la navbar */
+  border: 2px solid #0d423b; /* Bordure très foncée pour la profondeur */
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4); /* Ombre interne pour creuser le rail */
+}
+
+.theme-switch:hover .slider {
+  border-color: #2a9d8f; /* S'éclaire au survol avec le vert jade */
+}
+
+/* Taille et couleur des icônes SVG */
+.icon {
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  fill: #fdfbf7; /* Icônes ivoires pour bien ressortir sur le vert */
+}
+
+/* 2. Le curseur glissant : transformé en mini-tuile Mahjong */
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 54px;
+  height: 32px;
+
+  /* Face ivoire de la tuile */
+  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 50%, #f0e5cf 100%);
+  border-radius: 20px; /* Bords très arrondis pour bien coulisser */
+  border: 1px solid #e3d5b8;
+
+  /* L'effet 3D avec l'épaisseur bleue du logo */
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
+    inset -1px -2px 3px rgba(0, 0, 0, 0.1),
+    0 3px 0 #1c73a8, /* Épaisseur bleue */
+    0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre portée dans le rail */
+
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+input:checked + .slider::after {
+  transform: translateX(54px);
+}
+
+/* Effets d'opacité et de zoom sur les icônes Soleil/Lune */
+input:not(:checked) + .slider .moon {
+  opacity: 0.3;
+  transform: scale(0.85);
+}
+
+input:not(:checked) + .slider .sun {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)); /* Léger halo lumineux */
+}
+
+input:checked + .slider .sun {
+  opacity: 0.3;
+  transform: scale(0.85);
+}
+
+input:checked + .slider .moon {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+}
