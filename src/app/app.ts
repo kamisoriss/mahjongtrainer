@@ -7,7 +7,7 @@ import {Acceuil} from './acceuil/acceuil';
 import {Footer} from './footer/footer';
 
 @Component({
-  imports: [RouterOutlet, Navbar, Header, Legalbar, Acceuil, Footer],
+  imports: [RouterOutlet, Navbar, Header, Footer],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

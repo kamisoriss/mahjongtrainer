@@ -1,1 +1,38 @@
-<p>combinaison-mcr works!</p>
+<div class="page-combinaisons">
+
+  <div class="actions-haut">
+    <a href="assets/document/mcr_combis_4pages.pdf" target="_blank" class="btn-tuile btn-telecharger">
+      Ouvrir le Mémo PDF
+    </a>
+  </div>
+
+  <div class="grille-combinaisons">
+    <!-- Première boucle : on crée un volet par catégorie de points -->
+    @for (groupe of groupes; track groupe.valeur) {
+
+      <details class="carte-combi volet">
+
+        <!-- En-tête cliquable : "Combinaisons à 88 points" -->
+        <summary class="combi-en-tete">
+          <h3>Combinaisons à {{ groupe.valeur }} Points</h3>
+          <span class="badge-points">{{ groupe.valeur }} pts</span>
+        </summary>
+
+        <div class="combi-contenu">
+          <!-- Deuxième boucle : on affiche chaque figure de ce groupe -->
+          @for (combi of groupe.combinaisons; track combi.nom) {
+
+            <div class="item-combinaison">
+              <h4>{{ combi.nom }}</h4>
+              <p>{{ combi.description }}</p>
+            </div>
+
+          }
+        </div>
+
+      </details>
+
+    }
+  </div>
+
+</div>
