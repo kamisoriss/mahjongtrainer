@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && copy public\\\\_redirects dist\\\\mahjongtrainer\\\\browser\\\\_redirects &&  copy public\\\\_headers dist\\\\mahjongtrainer\\\\browser\\\\_headers",
     "watch": "ng build --watch --configuration development",
+    "deploy": "npm --cpu=x64 --os=win32 exec -- wrangler pages deploy dist/mahjongtrainer/browser --project-name=mahjongtrainer",
     "test": "ng test"
   },
   "private": true,

@@ -1,0 +1,4 @@
+/fr/*
+  X-Frame-Options: SAMEORIGIN
+/en/*
+  X-Frame-Options: SAMEORIGIN

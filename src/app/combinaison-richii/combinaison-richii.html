@@ -1,1 +1,87 @@
-<p>combinaison-richii works!</p>
+<div class="page-combinaisons">
+
+  <div class="actions-haut">
+    <a href="assets/document/riichi-fr-regle.pdf" target="_blank" class="btn-tuile btn-telecharger">Ouvrir les règle PDF</a>
+    <a href="assets/document/yakus-v2.2-fr.pdf" target="_blank" class="btn-tuile btn-telecharger">Liste des combinaison</a>
+  </div>
+
+  <!-- Alerte Riichi convertie avec des classes CSS personnalisées -->
+  <div class="alerte-riichi">
+    <div class="alerte-en-tete">
+      <span aria-hidden="true" class="icone-alerte">⚠️</span>
+      <h2>Différences avec les règles japonaises standards modernes</h2>
+    </div>
+
+    <p class="alerte-intro">
+      Ce livret officiel présente les règles compétitives de la
+      <strong>Fédération Française de Mah-Jong (Règles EMA)</strong>.
+      Si vous utilisez ce document pour jouer selon les règles japonaises standards modernes couramment pratiquées,
+      sachez que ces dernières appliquent encore quelques variantes réglementaires.
+    </p>
+
+    <p class="alerte-soustitre">
+      Voici les <strong>3 différences majeures</strong> résiduelles par rapport au texte de la fédération :
+    </p>
+
+    <ul class="alerte-liste">
+      <li>
+        <span class="puce-ambre">•</span>
+        <span>
+          <strong>L'intégration des <em>Aka Dora</em> (5 Rouges) :</strong>
+          Le règlement de la fédération exclut les cinq rouges. Dans la règle standard moderne, le jeu intègre par défaut
+          <strong>3 tuiles entièrement rouges</strong> (un 5 de chaque famille). Chaque <em>Aka Dora</em> présent dans
+          une main gagnante agit comme une Dora bonus et ajoute <strong>+1 Han</strong> au score.
+          Ils ne permettent cependant pas de valider la main à eux seuls (ce ne sont pas des Yakus).
+        </span>
+      </li>
+      <li>
+        <span class="puce-ambre">•</span>
+        <span>
+          <strong>La fin de partie par faillite (<em>Tobi</em>) :</strong>
+          Selon la FFMJ, la partie continue sans aucune modification si le score d'un joueur devient négatif.
+          Dans la règle japonaise standard, dès qu'un joueur descend
+          <strong>en dessous de 0 point, le <em>Tobi</em> est prononcé et la partie s'arrête immédiatement</strong>.
+        </span>
+      </li>
+      <li>
+        <span class="puce-ambre">•</span>
+        <span>
+          <strong>La validité du <em>Nagashi Mangan</em> :</strong>
+          Cette situation spéciale lors d'une donne nulle est officiellement supprimée par la fédération.
+          Elle reste en revanche <strong>totalement active dans la règle standard</strong> : un joueur qui ne défausse
+          que des tuiles terminales (1 ou 9) et des Honneurs (Vents ou Dragons) sans qu'aucune ne soit réclamée
+          par un adversaire marque les points d'un Mangan si personne ne déclare de victoire.
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Grille des Yakus -->
+  <div class="grille-combinaisons">
+    @for (groupe of groupes; track groupe.valeur) {
+
+      <details class="carte-combi volet">
+
+        <summary class="combi-en-tete">
+          <!-- Modification du vocabulaire (Yakus et Han au lieu de Combinaisons et Points) -->
+          <h3>Yakus à {{ groupe.valeur }} Han</h3>
+          <span class="badge-points">{{ groupe.valeur }} Han</span>
+        </summary>
+
+        <div class="combi-contenu">
+          @for (combi of groupe.combinaisons; track combi.nom) {
+
+            <div class="item-combinaison">
+              <h4>{{ combi.nom }}</h4>
+              <p>{{ combi.description }}</p>
+            </div>
+
+          }
+        </div>
+
+      </details>
+
+    }
+  </div>
+
+</div>

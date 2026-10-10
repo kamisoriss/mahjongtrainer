@@ -1,0 +1,200 @@
+.page-combinaisons {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.actions-haut {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.btn-telecharger {
+  width: fit-content;
+  padding: 1rem 2rem;
+}
+
+/* Grille adaptative */
+.grille-combinaisons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Style de la carte individuelle (fermée) */
+.carte-combi {
+  background-color: var(--bg-elements);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.2s ease;
+  max-width: 800px; /* Anciennement 450px */
+
+}
+
+.carte-combi:hover {
+  transform: translateY(-5px);
+}
+
+/* --- GESTION DU VOLET INTERACTIF --- */
+
+/* 1. Curseur cliquable et masque la flèche native */
+details.volet summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+}
+
+details.volet summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 2. L'en-tête de base (sans bordure) */
+.combi-en-tete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  transition: margin-bottom 0.2s ease;
+}
+
+/* 3. La bordure cyan apparaît uniquement à l'ouverture */
+details.volet[open] .combi-en-tete {
+  border-bottom: 2px solid var(--jade-green);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* 4. Style du texte */
+.combi-en-tete h3 {
+  color: var(--jade-green);
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.badge-points {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.combi-description {
+  color: var(--text-main);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 5. Animation d'apparition du texte */
+.combi-contenu {
+  animation: fondu 0.3s ease-in-out;
+}/* Style de chaque combinaison à l'intérieur du volet */
+.item-combinaison {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation discrète */
+}
+
+/* On retire la ligne sous la toute dernière figure de la liste */
+.item-combinaison:last-child {
+  border-bottom: none;
+  padding-bottom: 0.5rem;
+}
+
+/* On applique l'ancien style cyan et gras aux titres internes */
+.item-combinaison h4 {
+  color: var(--jade-green);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Style de la description */
+.item-combinaison p {
+  color: var(--text-main);
+  opacity: 0.9;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: justify;
+}
+/* --- STYLE DE L'ALERTE RIICHI (OPTIMISÉ POUR CLAIR & SOMBRE) --- */
+
+.alerte-riichi {
+  background-color: #fef3c7;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.alerte-en-tete h2 {
+  color: #78350f;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.alerte-intro, .alerte-soustitre, .alerte-liste li span {
+  color: #2d1e10;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.alerte-soustitre {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.puce-ambre {
+  color: #d97706;
+  font-weight: 900;
+  margin-right: 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.alerte-liste strong, .alerte-intro strong {
+  color: #92400e;
+}
+@keyframes fondu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* 2. Mode Sombre : Utilisation de :host-context() pour forcer le style sombre */
+:host-context([data-theme="dark"]) .alerte-riichi {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-left: 4px solid #f59e0b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+:host-context([data-theme="dark"]) .alerte-en-tete h2 {
+  color: #fbbf24;
+}
+
+:host-context([data-theme="dark"]) .alerte-intro,
+:host-context([data-theme="dark"]) .alerte-soustitre,
+:host-context([data-theme="dark"]) .alerte-liste li span {
+  color: var(--text-main);
+}
+
+:host-context([data-theme="dark"]) .puce-ambre {
+  color: #f59e0b;
+}
+
+:host-context([data-theme="dark"]) .alerte-liste strong,
+:host-context([data-theme="dark"]) .alerte-intro strong {
+  color: #fbbf24;
+}

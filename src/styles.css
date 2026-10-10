@@ -126,3 +126,29 @@ li::marker {
     0 0 0 #1c73a8,
     0 2px 4px rgba(0, 0, 0, 0.3);
 }
+/* Force l'application du style en mode sombre avec une priorité haute */
+body[data-theme="dark"] .btn-tuile {
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.2),
+    0 6px 0 #2a8bc9, /* Tranche bleue légèrement plus claire pour ressortir sur le noir */
+    0 10px 15px rgba(0, 0, 0, 0.95), /* Ombre très forte */
+    0 0 8px rgba(255, 255, 255, 0.05); /* Micro-halo clair pour détacher le bouton du fond */
+}
+
+body[data-theme="dark"] .btn-tuile:hover {
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.2),
+    0 4px 0 #2a8bc9,
+    0 6px 12px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme="dark"] .btn-tuile:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -3px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 #2a8bc9,
+    0 2px 4px rgba(0, 0, 0, 0.9);
+}
