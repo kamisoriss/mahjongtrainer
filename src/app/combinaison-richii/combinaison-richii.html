@@ -1,8 +1,10 @@
 <div class="page-combinaisons">
 
   <div class="actions-haut">
-    <a href="assets/document/riichi-fr-regle.pdf" target="_blank" class="btn-tuile btn-telecharger">Ouvrir les règle PDF</a>
-    <a href="assets/document/yakus-v2.2-fr.pdf" target="_blank" class="btn-tuile btn-telecharger">Liste des combinaison</a>
+    <a href="assets/document/riichi-fr-regle.pdf" target="_blank" class="btn-tuile btn-telecharger">Ouvrir les règles
+      PDF</a>
+    <a href="assets/document/yakus-v2.2-fr.pdf" target="_blank" class="btn-tuile btn-telecharger">Liste des
+      combinaisons</a>
   </div>
 
   <!-- Alerte Riichi convertie avec des classes CSS personnalisées -->
@@ -56,32 +58,52 @@
     </ul>
   </div>
 
-  <!-- Grille des Yakus -->
+  <!-- Note sur les valeurs (Fusionnée proprement avant la grille) -->
+  <div class="alerte-riichi" style="margin-top: 2rem;">
+    <div class="alerte-en-tete">
+      <h2><span class="puce-ambre">!</span> Valeurs des Yakus (Riichi)</h2>
+    </div>
+    <div class="alerte-intro" style="margin-top: 1rem;">
+      <strong>Cercle bleu/noir :</strong> Valeur en main fermée (Menzen)<br>
+      <strong>Cercle vide :</strong> Valeur en main ouverte (Naki). Un <strong>"-"</strong> signifie que le Yaku n'est
+      valable qu'en main fermée.
+    </div>
+  </div>
+
+  <!-- La grille des combinaisons -->
   <div class="grille-combinaisons">
-    @for (groupe of groupes; track groupe.valeur) {
+
+    <!-- Remplacement de groupesRiichi par groupes -->
+    @for (groupe of groupes; track groupe.nomCategorie) {
 
       <details class="carte-combi volet">
-
         <summary class="combi-en-tete">
-          <!-- Modification du vocabulaire (Yakus et Han au lieu de Combinaisons et Points) -->
-          <h3>Yakus à {{ groupe.valeur }} Han</h3>
-          <span class="badge-points">{{ groupe.valeur }} Han</span>
+          <h3>{{ groupe.nomCategorie }}</h3>
         </summary>
 
         <div class="combi-contenu">
-          @for (combi of groupe.combinaisons; track combi.nom) {
 
+          @for (yaku of groupe.yakus; track yaku.nom) {
             <div class="item-combinaison">
-              <h4>{{ combi.nom }}</h4>
-              <p>{{ combi.description }}</p>
+
+              <!-- En-tête de la combinaison : Titre à gauche, Badges à droite -->
+              <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem;">
+                <h4 style="margin: 0;">{{ yaku.nom }}</h4>
+                <div style="display: flex; gap: 0.5rem; flex-shrink: 0;">
+                  <span class="badge-points badge-ferme" title="Main fermée">{{ yaku.valeurFerme }}</span>
+                  <span class="badge-points badge-ouvert" title="Main ouverte">{{ yaku.valeurOuvert }}</span>
+                </div>
+              </div>
+
+              <p>{{ yaku.description }}</p>
             </div>
-
           }
-        </div>
 
+        </div>
       </details>
 
     }
-  </div>
 
+  </div>
 </div>

@@ -1,0 +1,84 @@
+/* 1. L'arrière-plan qui prend TOUT l'écran et centre la popup */
+.cookie-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.75) !important; /* Fond noir transparent */
+
+  /* Flexbox pour le centrage absolu */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  z-index: 99999 !important; /* Doit passer par-dessus ton header/logo */
+}
+
+/* 2. La carte de la popup */
+.cookie-cadre {
+  background-color: var(--bg-card, #1e293b);
+  border: 1px solid var(--accent-cyan, #0ea5e9);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+  text-align: left;
+}
+
+.cookie-cadre h3 {
+  color: var(--accent-cyan, #0ea5e9);
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.cookie-cadre p {
+  color: var(--text-main, #e2e8f0);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* 3. L'alignement des boutons */
+.cookie-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+/* 4. Le style de base des deux boutons */
+.cookie-actions button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 5. Le bouton Refuser (Discret) */
+.btn-refuser {
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+  border: 1px solid #475569 !important;
+}
+
+.btn-refuser:hover {
+  background-color: #334155 !important;
+  color: white !important;
+}
+
+/* 6. Le bouton Accepter (Mise en avant) */
+.btn-accepter {
+  background: linear-gradient(135deg, var(--accent-cyan, #0ea5e9), var(--accent-indigo, #6366f1)) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+}
+
+.btn-accepter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.5);
+}

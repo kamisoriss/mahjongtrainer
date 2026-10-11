@@ -1,0 +1,95 @@
+.alerte-cookies {
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 1px solid #f59e0b;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.alerte-cookies p {
+  color: #f59e0b;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.btn-accepter-direct {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .alerte-cookies {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-accepter-direct {
+    width: 100%;
+  }
+}
+
+.titre-page {
+  text-align: center;
+  margin: 30px auto 25px auto;
+}
+
+.cadre-texte {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  padding: 24px 32px;
+}
+
+.form-message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 350px;
+}
+
+.form-message input[type="text"],
+.form-message input[type="email"],
+.form-message textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background-color: var(--bg-elements);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-message input:focus,
+.form-message textarea:focus {
+  outline: none;
+  border-color: var(--jade-green);
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.2);
+  background-color: var(--bg-elements);
+}
+
+.form-message textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.btn-action {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,60 @@
+/* --- Style pour .politique-container --- */
+.politique-container {
+  background-color: var(--bg-elements) !important;
+  color: var(--text-main) !important;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 8px; /* Remplacé : var(--radius-lg) */
+  border: 1px solid rgba(128, 128, 128, 0.2); /* Remplacé : var(--border-color) */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Ombre neutre au lieu de bleutée */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.politique-container h1,
+.politique-container h2,
+.politique-container p {
+  color: var(--text-main) !important;
+  opacity: 1 !important;
+}
+
+.politique-container h2 {
+  color: var(--jade-green) !important; /* Remplacé : Cyan -> Vert Jade */
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.politique-container p {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  color: var(--text-main) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 16px !important;
+}
+
+.politique-container a {
+  color: #f59e0b !important; /* Remplacé : Indigo -> Ambre/Orange pour le contraste */
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.lien-externe {
+  color: var(--jade-green); /* Remplacé : Cyan -> Vert Jade */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.lien-externe:hover {
+  text-decoration: underline;
+  color: #f59e0b; /* Remplacé : Indigo -> Ambre/Orange au survol */
+}

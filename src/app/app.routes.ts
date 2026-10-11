@@ -7,6 +7,8 @@ import {CombinaisonMcr} from './combinaison-mcr/combinaison-mcr';
 import { CombinaisonRichii } from './combinaison-richii/combinaison-richii';
 import { SimulationmainMcr } from './simulationmain-mcr/simulationmain-mcr';
 import { SimulationmainRichii } from './simulationmain-richii/simulationmain-richii';
+import { Politiqueconfidentialite } from './politiqueconfidentialite/politiqueconfidentialite';
+import { Contact } from './contact/contact';
 
 export const routes: Routes = [
   { path: 'Mcr', component: MCR },
@@ -17,7 +19,8 @@ export const routes: Routes = [
   { path: 'Simulationmain-richii', component: SimulationmainRichii },
   { path: 'Acceuil', component: Acceuil },
   { path: 'Mention-legal', component: Mentionlegal },
-
+  { path: 'Politiqueconficentialite', component: Politiqueconfidentialite},
+  { path: 'Contact', component: Contact },
   { path: '', redirectTo: '/Acceuil', pathMatch: 'full' },
   { path: '**', redirectTo: '/Acceuil', pathMatch: 'full' },
   { path: '', component: Acceuil },

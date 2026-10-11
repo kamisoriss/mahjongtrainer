@@ -81,6 +81,20 @@ details.volet[open] summary.combi-en-tete {
   font-size: 1.1rem;
 }
 
+/* Couleur du premier cercle (Main fermée) */
+.badge-ferme {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+/* Couleur du deuxième cercle (Main ouverte) */
+.badge-ouvert {
+  background-color: transparent;
+  /* var(--text-main) sera blanc en mode sombre, et noir/foncé en mode clair */
+  color: var(--text-main);
+  /* Une bordure grise qui se verra parfaitement sur fond sombre ET sur fond clair */
+  border: 2px solid rgba(128, 128, 128, 0.4);
+}
 /* --- CONTENU DE LA CARTE --- */
 
 .combi-contenu {

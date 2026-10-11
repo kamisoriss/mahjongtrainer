@@ -1,1 +1,46 @@
-<p>contact works!</p>
+<h1 class="titre-page">Contact</h1>
+
+<div class="cadre-texte">
+
+  @if (contactService.successMessage()) {
+    <!-- Message de succès -->
+    <div class="succes-msg">
+      <p>Merci ! Votre message a bien été envoyée.</p>
+    <button class="btn-action" (click)="recommencer()">Faire un nouveau contact</button>
+    </div>
+  } @else {
+    <form [formGroup]="demandeform" (ngSubmit)="onSubmit()" class="form-message">
+      <textarea formControlName="message" placeholder="Décrivez votre message ici..."></textarea>
+      @if (demandeform.get('message')?.invalid && (demandeform.get('message')?.dirty || demandeform.get('message')?.touched) || demandeform.get('message')?.pristine) {
+        <small class="erreur-msg">
+          @if (demandeform.get('message')?.hasError('required')) {
+            Merci de décrire votre message
+          }
+        </small>
+      }
+      @if (cookieService.hCaptchaAccepte()) {
+
+        <ng-hcaptcha (verify)="onCaptchaComplete($event)"></ng-hcaptcha>
+        <button type="submit" class="btn-action"
+                [disabled]="contactService.isSubmitting() || demandeform.invalid || !captchaToken()">
+          {{ contactService.isSubmitting() ? 'Envoi en cours...' : 'Envoyer la demande' }}
+        </button>
+
+      } @else {
+
+        <!-- Le nouveau message d'alerte avec le bouton intégré -->
+        <div class="alerte-cookies">
+          <p>Vous devez accepter les cookies de sécurité hCaptcha pour pouvoir valider ce formulaire.</p>
+
+          <!-- Ce bouton accepte directement les cookies sans rouvrir la popup -->
+          <button type="button" class="btn-action btn-accepter-direct" (click)="cookieService.accepter()">
+            Accepter
+          </button>
+        </div>
+
+      }
+
+    </form>
+  }
+
+</div>
