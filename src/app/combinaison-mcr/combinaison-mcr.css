@@ -15,64 +15,56 @@
   padding: 1rem 2rem;
 }
 
-/* Grille adaptative */
+/* Grille adaptative en 2 colonnes */
 .grille-combinaisons {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  justify-content: center;
+  align-items: start; /* Empêche les cartes de s'étirer verticalement */
 }
 
-/* Style de la carte individuelle (fermée) */
+/* Style de la carte individuelle */
 .carte-combi {
   background-color: var(--bg-elements);
   border: 1px solid rgba(128, 128, 128, 0.2);
   border-radius: 8px;
-  padding: 1.5rem;
+  overflow: hidden; /* INDISPENSABLE : permet au summary de respecter les angles arrondis */
   width: 100%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: transform 0.2s ease;
-  max-width: 800px; /* Anciennement 450px */
-
+  /* On a retiré le padding ici pour le mettre sur le summary et le contenu */
 }
 
 .carte-combi:hover {
   transform: translateY(-5px);
 }
 
-/* --- GESTION DU VOLET INTERACTIF --- */
+/* --- GESTION DU VOLET INTERACTIF ET DU CLIC SUR TOUTE LA ZONE --- */
 
-/* 1. Curseur cliquable et masque la flèche native */
-details.volet summary {
-  cursor: pointer;
-  list-style: none;
-  outline: none;
-}
-
-details.volet summary::-webkit-details-marker {
-  display: none;
-}
-
-/* 2. L'en-tête de base (sans bordure) */
-.combi-en-tete {
+/* Le summary sert de conteneur principal. C'est lui qui gère le padding cliquable. */
+details.volet summary.combi-en-tete {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  transition: margin-bottom 0.2s ease;
+  padding: 1.5rem; /* Le padding est ici : toute cette zone est cliquable */
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  margin: 0;
 }
 
-/* 3. La bordure cyan apparaît uniquement à l'ouverture */
-details.volet[open] .combi-en-tete {
+/* Cache la flèche native des détails */
+details.volet summary.combi-en-tete::-webkit-details-marker {
+  display: none;
+}
+
+/* Bordure verte quand le volet est ouvert */
+details.volet[open] summary.combi-en-tete {
   border-bottom: 2px solid var(--jade-green);
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
 }
 
-/* 4. Style du texte */
 .combi-en-tete h3 {
   color: var(--jade-green);
   font-size: 1.2rem;
@@ -89,28 +81,25 @@ details.volet[open] .combi-en-tete {
   font-size: 1.1rem;
 }
 
-.combi-description {
-  color: var(--text-main);
-  line-height: 1.6;
-  text-align: justify;
+/* --- CONTENU DE LA CARTE --- */
+
+.combi-contenu {
+  /* On recrée l'espacement intérieur puisqu'on l'a enlevé de la carte globale */
+  padding: 1rem 1.5rem 1.5rem;
+  animation: fondu 0.3s ease-in-out;
 }
 
-/* 5. Animation d'apparition du texte */
-.combi-contenu {
-  animation: fondu 0.3s ease-in-out;
-}/* Style de chaque combinaison à l'intérieur du volet */
+/* Style de chaque combinaison à l'intérieur du volet */
 .item-combinaison {
   padding: 1.2rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation discrète */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* On retire la ligne sous la toute dernière figure de la liste */
 .item-combinaison:last-child {
   border-bottom: none;
   padding-bottom: 0.5rem;
 }
 
-/* On applique l'ancien style cyan et gras aux titres internes */
 .item-combinaison h4 {
   color: var(--jade-green);
   font-size: 1.15rem;
@@ -119,7 +108,6 @@ details.volet[open] .combi-en-tete {
   margin-bottom: 0.5rem;
 }
 
-/* Style de la description */
 .item-combinaison p {
   color: var(--text-main);
   opacity: 0.9;
@@ -127,9 +115,4 @@ details.volet[open] .combi-en-tete {
   line-height: 1.5;
   margin: 0;
   text-align: justify;
-}
-
-@keyframes fondu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
