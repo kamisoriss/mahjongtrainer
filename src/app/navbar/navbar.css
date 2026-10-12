@@ -1,8 +1,10 @@
+/* --- 1. STYLES DE BASE (Tous les écrans) --- */
 .nav-logo-img {
   width: 100%;
   height: auto;
   object-fit: contain;
 }
+
 .nav-logo-container {
   margin-top: auto;
   padding-bottom: 1rem;
@@ -15,6 +17,7 @@
   justify-content: center;
   align-items: center;
 }
+
 :host {
   display: block;
   height: 100%;
@@ -37,7 +40,51 @@ ul {
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .nav-bar .btn-tuile {
   display: block;
   width: 100%;
+}
+
+/* On cache le bouton burger sur grand écran (ordinateur) */
+.menu-burger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    height: auto;
+    padding: 1rem;
+  }
+
+  .menu-burger {
+    display: block;
+    background-color: #fdf5e6;
+    color: #0b5f6a;
+    font-weight: bold;
+    border: 2px solid #0b5f6a;
+    padding: 10px 20px;
+    width: max-content; /* Cette ligne réduit la taille du bouton pour laisser la place au thème */
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  /* Le reste du code reste identique... */
+  .nav-bar ul,
+  .nav-bar .nav-logo-container {
+    display: none;
+  }
+
+  .nav-bar.ouvert ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .nav-bar.ouvert .nav-logo-container {
+    display: flex;
+    margin-top: 20px;
+  }
 }

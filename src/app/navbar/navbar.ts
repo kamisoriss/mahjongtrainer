@@ -11,4 +11,10 @@ import {NgOptimizedImage} from '@angular/common';
   styleUrl: './navbar.css',
   templateUrl: './navbar.html',
 })
-export class Navbar {}
+export class Navbar {
+  isMenuOuvert: boolean = false;
+
+  toggleMenu() {
+    this.isMenuOuvert = !this.isMenuOuvert;
+  }
+}

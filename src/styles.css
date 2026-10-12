@@ -152,3 +152,28 @@ body[data-theme="dark"] .btn-tuile:active {
     0 0 0 #2a8bc9,
     0 2px 4px rgba(0, 0, 0, 0.9);
 }
+@media (max-width: 768px) {
+  /* On force l'empilement vertical */
+  .app-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+  }
+
+  /* On dit au composant du menu de prendre 100% de large et de s'adapter en hauteur */
+  app-navbar {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  /* Le texte prend toute la largeur et on annule l'ancienne marge de gauche */
+  .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+  }
+}

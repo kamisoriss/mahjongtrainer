@@ -198,3 +198,20 @@ details.volet[open] summary.combi-en-tete {
 :host-context([data-theme="dark"]) .alerte-intro strong {
   color: #fbbf24;
 }
+@media (max-width: 768px) {
+  /* Remplace '.conteneur-combinaisons' par la vraie classe de la zone qui englobe tes cartes */
+  .grille-combinaisons {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 20px;
+    width: 100% !important;
+  }
+
+  /* Remplace '.carte-combinaison' par la vraie classe de tes blocs (les carrés gris) */
+  .carte-combinaison {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
