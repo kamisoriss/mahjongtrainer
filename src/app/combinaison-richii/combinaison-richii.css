@@ -200,7 +200,7 @@ details.volet[open] summary.combi-en-tete {
 }
 @media (max-width: 768px) {
   /* Remplace '.conteneur-combinaisons' par la vraie classe de la zone qui englobe tes cartes */
-  .grille-combinaisons {
+  .grille-combinaisonsy {
     display: flex !important;
     flex-direction: column !important;
     align-items: center;

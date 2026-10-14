@@ -1,1 +1,137 @@
-<p>simulationmain-mcr works!</p>
+<div class="simulateur-container">
+  <div class="zone-main">
+    <h2>Ma Main ({{ nombreTotalTuiles }} / 14 tuiles)</h2>
+
+    <div class="sous-zone">
+      <h3>Tuiles en main cachée :</h3>
+      <div class="main-joueur-container">
+        @if (mainJoueur.length === 0) {
+          <p class="placeholder">Aucune tuile en main. Cliquez en bas pour ajouter.</p>
+        }
+        @for (tuile of mainJoueur; track $index) {
+          <div class="tuile en-main" (click)="retirerTuileMain($index)" title="Cliquez pour retirer">
+            <img [ngSrc]="getCheminImage(tuile)" [alt]="tuile.suit + ' ' + tuile.value" fill>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- BOUTONS DE CHOIX MANUEL -->
+    <!-- BOUTONS DE DÉCLARATION SUR LA TABLE -->
+    @if (!estFigureSpeciale && mainJoueur.length >= 3) {
+      <div class="actions-declaration">
+        <button (click)="declarerGroupe('pong', false)">+ Déclarer Pong </button>
+        @if (mainJoueur.length >= 4) {
+          <button (click)="declarerGroupe('kong', true)">+ Déclarer Kong Caché</button>
+          <button (click)="declarerGroupe('kong', false)">+ Déclarer Kong </button>
+        }
+        <button (click)="declarerGroupe('chow', false)">+ Déclarer Chow</button>
+      </div>
+    }
+
+    <div class="sous-zone" style="margin-top: 15px;">
+      <h3>Combinaisons déclarées sur la table :</h3>
+      <div class="declares-container">
+        @if (tuilesDeclarees.length === 0) {
+          <p class="placeholder">Aucune combinaison déclarée.</p>
+        }
+        @for (groupe of tuilesDeclarees; track $index) {
+          <div class="groupe-declare" (click)="supprimerGroupeDeclare($index)" title="Cliquer pour reprendre dans la main">
+            <span class="badge-type">{{ groupe.type }} ({{ groupe.estCache ? 'Caché' : 'Exposé' }})</span>
+            <div class="miniatures">
+              @for (tuile of groupe.tuiles; track $index) {
+                <div class="tuile-mini">
+                  <img [ngSrc]="getCheminImage(tuile)" [alt]="tuile.suit" fill>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="zone-analyse">
+    <div class="options-victoire">
+      <h4>Contexte de la manche :</h4>
+
+      <div class="vents-container">
+        <label>
+          Vent Dominant :
+          <select [value]="ventDominant" (change)="changerVentDominant($event)">
+            @for (vent of ventsOptions; track vent.valeur) {
+              <option [value]="vent.valeur">{{ vent.nom }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          Vent du Joueur :
+          <select [value]="ventJoueur" (change)="changerVentJoueur($event)">
+            @for (vent of ventsOptions; track vent.valeur) {
+              <option [value]="vent.valeur">{{ vent.nom }}</option>
+            }
+          </select>
+        </label>
+
+        <label [class.disabled]="estFigureSpeciale">
+          Type d'attente (1 pt) :
+          <select [value]="typeAttente" (change)="changerAttente($event)" [disabled]="estFigureSpeciale">
+            <option value="aucune">Aucune / Multiple</option>
+            <option value="paire">Attente sur la paire / Unique</option>
+            <option value="milieu">Attente au milieu (Closed wait)</option>
+            <option value="bord">Attente sur le bord (Edge wait)</option>
+          </select>
+        </label>
+      </div>
+
+      <hr>
+
+      <h4>Conditions de fin de partie :</h4>
+      <div class="checkbox-group">
+        <label [class.disabled]="estToutCacheDesactive">
+          <input type="checkbox" [checked]="conditionToutCache" [disabled]="estToutCacheDesactive" (change)="basculerCondition('cache')">
+          Tout caché (Fully concealed)
+        </label>
+        <label [class.disabled]="estTirageDesactive">
+          <input type="checkbox" [checked]="conditionTirage" [disabled]="estTirageDesactive" (change)="basculerCondition('tirage')">
+          Tiré soi-même (Self-drawn)
+        </label>
+        <label>
+          <input type="checkbox" [checked]="conditionDerniereTuile" (change)="basculerCondition('derniere')">
+          Dernière tuile du mur
+        </label>
+      </div>
+    </div>
+
+    <div class="resultat-box">
+      <h3>Analyse MCR</h3>
+      <p class="score-total" [class.valide]="resultatAnalyse.estValideMCR" [class.invalide]="!resultatAnalyse.estValideMCR">
+        Points : <strong>{{ resultatAnalyse.points }}</strong>
+        @if (resultatAnalyse.points > 0 && !resultatAnalyse.estValideMCR) {
+          <span class="avertissement"> (8 points minimum requis)</span>
+        }
+      </p>
+      <ul>
+        @for (combi of resultatAnalyse.combinaisons; track $index) {
+          <li>{{ combi }}</li>
+        } @empty {
+          <li><em>Aucune combinaison détectée.</em></li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="zone-reserve">
+    <h3>Sélectionnez vos tuiles</h3>
+    <div class="clavier-tuiles">
+      @for (tuile of tuilesDisponibles; track $index) {
+        <div class="tuile disponible"
+             [class.epuisee]="compterExemplairesTuile(tuile) >= 4"
+             (click)="ajouterTuile(tuile)">
+          <img [ngSrc]="getCheminImage(tuile)" [alt]="tuile.suit + ' ' + tuile.value" fill>
+        </div>
+      }
+    </div>
+  </div>
+</div>

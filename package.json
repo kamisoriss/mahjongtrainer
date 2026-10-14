@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build && copy public\\\\_redirects dist\\\\mahjongtrainer\\\\browser\\\\_redirects &&  copy public\\\\_headers dist\\\\mahjongtrainer\\\\browser\\\\_headers",
     "watch": "ng build --watch --configuration development",
-    "deploy": "npm --cpu=x64 --os=win32 exec -- wrangler pages deploy dist/mahjongtrainer/browser --project-name=mahjongtrainer",
-    "test": "ng test"
+    "deploy": "npx wrangler pages deploy dist/mahjongtrainer/browser --project-name=mahjongtrainer"
   },
   "private": true,
   "packageManager": "npm@12.1.0",
@@ -20,13 +19,15 @@
     "@angular/router": "^22.2.0",
     "ng-hcaptcha": "^2.8.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "wrangler": "^4.149.0"
   },
   "devDependencies": {
     "@angular/build": "^22.2.0",
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
     "@angular/localize": "^22.2.0",
+    "@cloudflare/workerd-windows-64": "^1.20261012.1",
     "jsdom": "^30.0.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",

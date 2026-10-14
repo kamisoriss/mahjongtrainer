@@ -1,0 +1,139 @@
+.simulateur-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.zone-main, .zone-analyse, .zone-reserve {
+  background: #0f172a;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  color: #f8fafc;
+}
+
+.main-joueur-container, .declares-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 70px;
+  padding: 10px;
+  background: #1e293b;
+  border: 2px dashed #64748b;
+  border-radius: 8px;
+  align-items: center;
+}
+
+/* GRANDE TAILLE D'ORIGINE POUR LA MAIN ET LA RÉSERVE */
+.tuile {
+  display: inline-block;
+  width: 70px;
+  height: 95px;
+  cursor: pointer;
+  position: relative;
+  margin: 4px;
+  transition: transform 0.1s;
+}
+
+.tuile:hover {
+  transform: translateY(-5px);
+}
+
+.tuile img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  position: static !important;
+}
+
+/* Groupes déclarés sur la table (taille intermédiaire bien visible) */
+.tuile-mini {
+  width: 45px;
+  height: 62px;
+  position: relative;
+  display: inline-block;
+}
+
+.tuile-mini img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  position: static !important;
+}
+/* Groupes déclarés sur la table */
+.groupe-declare {
+  display: flex;
+  flex-direction: column;
+  background: #1e293b;
+  border: 1px solid #64748b;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.1s;
+}
+
+.groupe-declare:hover {
+  transform: translateY(-2px);
+  border-color: #ef4444;
+}
+
+.badge-type {
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.miniatures {
+  display: flex;
+  gap: 3px;
+}
+
+/* TAILLE DES MINIATURES SUR LA TABLE (légèrement plus grandes pour bien voir les chiffres) */
+.tuile-mini {
+  position: relative;
+  width: 35px;
+  height: 48px;
+}
+
+.tuile-mini img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.actions-declaration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.actions-declaration button {
+  padding: 8px 14px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.actions-declaration button:hover {
+  background-color: #219653;
+}
+
+.clavier-tuiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tuile.epuisee {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+}
