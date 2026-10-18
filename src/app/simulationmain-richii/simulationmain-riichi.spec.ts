@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SimulationmainRichii } from './simulationmain-richii';
+import { SimulationmainRichii } from './simulationmain-riichi';
 
 describe('SimulationmainRichii', () => {
   let component: SimulationmainRichii;

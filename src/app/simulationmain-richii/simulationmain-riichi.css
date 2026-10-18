@@ -1,0 +1,135 @@
+.simulateur-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #f1f5f9;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.zone-main, .zone-contexte, .zone-reserve {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tapis-tuiles, .tapis-declares, .clavier-tuiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 110px;
+  padding: 16px;
+  background: #131c31;
+  border: 1px dashed #334155;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.tuile {
+  position: relative;
+  width: 72px;
+  height: 98px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.tuile:hover {
+  transform: translateY(-5px);
+}
+
+.tuile.petite {
+  width: 58px;
+  height: 80px;
+}
+
+.tuile.epuisee {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.actions-declaration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.actions-declaration button {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actions-declaration button:hover {
+  background: #059669;
+}
+
+.groupe-declare {
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.badge-groupe {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #e2e8f0;
+}
+
+.tuiles-du-groupe {
+  display: flex;
+  gap: 6px;
+}
+
+.selecteurs-ligne, .conditions-victoire {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #334155;
+}
+
+.compteur-dora {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compteur-dora button {
+  background: #334155;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.badge-rang {
+  background: #f59e0b;
+  color: #0f172a;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.detail-paiement {
+  color: #94a3b8;
+  margin-top: -5px;
+}

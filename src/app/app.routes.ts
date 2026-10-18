@@ -6,7 +6,7 @@ import { Mentionlegal } from './mentionlegal/mentionlegal';
 import {CombinaisonMcr} from './combinaison-mcr/combinaison-mcr';
 import { CombinaisonRichii } from './combinaison-richii/combinaison-richii';
 import { SimulationmainMcr } from './simulationmain-mcr/simulationmain-mcr';
-import { SimulationmainRichii } from './simulationmain-richii/simulationmain-richii';
+import { SimulationmainRiichi } from './simulationmain-richii/simulationmain-riichi';
 import { Politiqueconfidentialite } from './politiqueconfidentialite/politiqueconfidentialite';
 import { Contact } from './contact/contact';
 
@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'Richii', component: Richii },
   { path: 'Combinaisonrichii', component: CombinaisonRichii },
   { path: 'Simulationmain-mcr', component: SimulationmainMcr },
-  { path: 'Simulationmain-richii', component: SimulationmainRichii },
+  { path: 'Simulationmain-richii', component: SimulationmainRiichi },
   { path: 'Acceuil', component: Acceuil },
   { path: 'Mention-legal', component: Mentionlegal },
   { path: 'Politiqueconficentialite', component: Politiqueconfidentialite},

@@ -1,0 +1,166 @@
+<div class="simulateur-container">
+  <h2>Simulateur de Main - Mahjong Riichi</h2>
+
+  <!-- ZONE DE LA MAIN DU JOUEUR -->
+  <div class="zone-main">
+    <h3>Ma Main ({{ nombreTotalTuiles }} / 14 tuiles)</h3>
+
+    <p class="sous-titre">Tuiles en main cachée :</p>
+    <div class="tapis-tuiles">
+      @for (tuile of mainJoueur; track $index) {
+        <div class="tuile" (click)="retirerTuileMain($index)" title="Cliquez pour retirer">
+          <img [ngSrc]="getCheminImage(tuile)" [alt]="tuile.suit + ' ' + tuile.value" fill>
+        </div>
+      } @empty {
+        <p class="message-vide">Aucune tuile en main. Cliquez en bas pour ajouter.</p>
+      }
+    </div>
+
+    <!-- BOUTONS DE DÉCLARATION SUR LA TABLE (Sans Pong Caché !) -->
+    @if (!estFigureSpeciale && mainJoueur.length >= 3) {
+      <div class="actions-declaration">
+        <button (click)="declarerGroupe('pong', false)">+ Déclarer Pon Exposé</button>
+        @if (mainJoueur.length >= 4) {
+          <button (click)="declarerGroupe('kong', true)">+ Déclarer Kan Caché (Ankan)</button>
+          <button (click)="declarerGroupe('kong', false)">+ Déclarer Kan Exposé (Minkan)</button>
+        }
+        <button (click)="declarerGroupe('chow', false)">+ Déclarer Chii</button>
+      </div>
+    }
+
+    <!-- GROUPES DÉCLARÉS -->
+    <p class="sous-titre">Appels et Kans déclarés sur la table :</p>
+    <div class="tapis-declares">
+      @for (groupe of tuilesDeclarees; track $index) {
+        <div class="groupe-declare" (click)="supprimerGroupeDeclare($index)" title="Cliquez pour remettre en main">
+          <span class="badge-groupe">
+            {{ groupe.type === 'pong' ? 'PON' : groupe.type === 'kong' ? 'KAN' : 'CHII' }}
+            ({{ groupe.estCache ? 'CACHÉ' : 'EXPOSÉ' }})
+          </span>
+          <div class="tuiles-du-groupe">
+            @for (t of groupe.tuiles; track $index) {
+              <div class="tuile petite">
+                <img [ngSrc]="getCheminImage(t)" [alt]="t.suit + ' ' + t.value" fill>
+              </div>
+            }
+          </div>
+        </div>
+      } @empty {
+        <p class="message-vide">Aucun appel déclaré (Main Menzen / Fermée).</p>
+      }
+    </div>
+  </div>
+
+  <!-- CONTEXTE & RÉSULTATS RIICHI -->
+  <div class="zone-contexte">
+    <div class="selecteurs-ligne">
+      <label>
+        Vent Dominant (Bakaze) :
+        <select [value]="ventDominant" (change)="changerVentDominant($event)">
+          @for (v of ventsOptions; track v.valeur) {
+            <option [value]="v.valeur">{{ v.nom }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        Vent du Joueur (Jikaze) :
+        <select [value]="ventJoueur" (change)="changerVentJoueur($event)">
+          @for (v of ventsOptions; track v.valeur) {
+            <option [value]="v.valeur">{{ v.nom }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        Attente :
+        <select [value]="typeAttente" [disabled]="estFigureSpeciale" (change)="changerAttente($event)">
+          <option value="aucune">Aucune</option>
+          <option value="ryanmen">Ryanmen</option>
+          <option value="shanpon">Shanpon</option>
+          <option value="tanki">Tanki</option>
+          <option value="kanchan">Kanchan</option>
+          <option value="penchan">Penchan</option>
+        </select>
+      </label>
+
+      <div class="compteur-dora">
+        <span>Dora / Aka Dora :</span>
+        <button type="button" (click)="changerDora(-1)">-</button>
+        <strong>{{ nbDora }}</strong>
+        <button type="button" (click)="changerDora(1)">+</button>
+      </div>
+    </div>
+
+    <div class="conditions-victoire">
+      <label>
+        <input type="checkbox" [checked]="estRiichi" [disabled]="estMainOuverte" (change)="basculerCondition('riichi')">
+        Riichi - Riichi (1 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estDoubleRiichi" [disabled]="estMainOuverte"
+               (change)="basculerCondition('doubleriichi')">
+        Daburu Riichi - Double Riichi (2 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estIppatsu" [disabled]="!estRiichi && !estDoubleRiichi"
+               (change)="basculerCondition('ippatsu')">
+        Ippatsu - Ippatsu (1 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estTsumo" (change)="basculerCondition('tsumo')">
+        Tsumo (Menzen Tsumo si main fermée)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estDerniereTuile" (change)="basculerCondition('derniere')">
+        Haitei Raoyue / Houtei Raoyui (1 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estRinshan" [disabled]="!aUnKanDeclare"
+               (change)="basculerCondition('rinshan')">
+        Rinshan Kaihou - Finir sur un Carré (1 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estChankan" (change)="basculerCondition('chankan')">
+        Chankan - Voler un Carré (1 Han)
+      </label>
+      <label>
+        <input type="checkbox" [checked]="estPremierTour" [disabled]="tuilesDeclarees.length > 0"
+               (change)="basculerCondition('premiertour')">
+        Tenhou / Chiihou / Renhou (1er tour)
+      </label>
+    </div>
+    <div class="resultat-box" [class.valide]="resultatAnalyse.estValideRiichi">
+      <h3>Analyse Riichi</h3>
+      @if (resultatAnalyse.estValideRiichi) {
+        <p class="score-principal">
+          <strong>{{ resultatAnalyse.points }} points</strong>
+          <span class="badge-rang">{{ resultatAnalyse.rang }}</span>
+        </p>
+        <p class="detail-paiement">{{ resultatAnalyse.detailPaiement }}</p>
+      } @else {
+        <p class="score-principal">Points : <strong>0</strong></p>
+      }
+
+      <ul>
+        @for (y of resultatAnalyse.yaku; track $index) {
+          <li>{{ y }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- RÉSERVE DE TUILES -->
+  <div class="zone-reserve">
+    <h3>Sélectionnez vos tuiles</h3>
+    <div class="clavier-tuiles">
+      @for (tuile of tuilesDisponibles; track $index) {
+        <div class="tuile disponible"
+             [class.epuisee]="compterExemplairesTuile(tuile) >= 4"
+             (click)="ajouterTuile(tuile)">
+          <img [ngSrc]="getCheminImage(tuile)" [alt]="tuile.suit + ' ' + tuile.value" fill>
+        </div>
+      }
+    </div>
+  </div>
+</div>
