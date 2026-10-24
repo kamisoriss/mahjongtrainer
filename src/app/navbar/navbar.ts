@@ -17,4 +17,7 @@ export class Navbar {
   toggleMenu() {
     this.isMenuOuvert = !this.isMenuOuvert;
   }
+  fermerMenu() {
+    this.isMenuOuvert = false;
+  }
 }

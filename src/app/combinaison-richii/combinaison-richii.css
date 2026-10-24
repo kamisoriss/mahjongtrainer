@@ -198,20 +198,26 @@ details.volet[open] summary.combi-en-tete {
 :host-context([data-theme="dark"]) .alerte-intro strong {
   color: #fbbf24;
 }
-@media (max-width: 768px) {
-  /* Remplace '.conteneur-combinaisons' par la vraie classe de la zone qui englobe tes cartes */
-  .grille-combinaisonsy {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center;
-    gap: 20px;
-    width: 100% !important;
-  }
+/* Grille principale des catégories */
+.grille-combinaisons {
+  display: grid;
+  /* S'adapte automatiquement : crée des colonnes d'au moins 280px, sinon passe à la ligne */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px; /* Évite de coller aux bords sur mobile */
+}
 
-  /* Remplace '.carte-combinaison' par la vraie classe de tes blocs (les carrés gris) */
-  .carte-combinaison {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
+/* S'assure que chaque carte/volet prend toute la largeur disponible de sa colonne */
+.carte-combinaison {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ajustement spécifique pour les petits écrans mobiles si besoin */
+@media (max-width: 480px) {
+  .grille-combinaisons {
+    grid-template-columns: 1fr; /* Force une seule colonne sur smartphone */
   }
 }
